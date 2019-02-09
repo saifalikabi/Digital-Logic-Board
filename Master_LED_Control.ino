@@ -248,6 +248,34 @@ if (!SWState26 ) {DataTrans9 = false;
   DataTrans16 = false;}
 
 
+// ENCODER program :
+
+if (SWState33){
+  
+if (SWState34 == HIGH ) {DataTrans17 = false;  DataTrans18 = false ; DataTrans19 = false;}
+if (SWState35 == HIGH ) {DataTrans17 = true;  DataTrans18 = false ; DataTrans19 = false;}
+if (SWState36 == HIGH ) {DataTrans17 = false;  DataTrans18 = true ; DataTrans19 = false;}
+if (SWState37 == HIGH ) {DataTrans17 = true;  DataTrans18 = true ; DataTrans19 = false;}
+if (SWState38 == HIGH ) {DataTrans17 = false;  DataTrans18 = false ; DataTrans19 = true;}
+if (SWState39 == HIGH ) {DataTrans17 = true;  DataTrans18 = false ; DataTrans19 = true;}
+if (SWState40 == HIGH ) {DataTrans17 = false;  DataTrans18 = true ; DataTrans19 = true;}
+if (SWState41 == HIGH ) {DataTrans17 = true;  DataTrans18 = true ; DataTrans19 = true;}
+}
+if (SWState34 == LOW && SWState35 == LOW &&  SWState36 == LOW && SWState37 == LOW &&
+SWState38 == LOW && SWState39 == LOW && SWState40 == LOW && SWState41 == LOW )
+{DataTrans17 = false;  DataTrans18 = false ; DataTrans19 = false;}
+  if (!SWState33) {DataTrans17 = false;  DataTrans18 = false ; DataTrans19 = false;}
+
+
+
+
+
+
+
+// J-K FF program :
+
+
+
 
 
 
