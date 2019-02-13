@@ -20,6 +20,20 @@ int LED14 = 42;
 int LED15 = 43;
 int LED16 = 44;
 
+int LED17 = 45;
+int LED18 = 46;
+int LED19 = 47;
+int LED20 = 48;
+int LED21 = 49;
+
+int LED30 = A0;
+int LED31 = A1;
+int LED32 = A2;
+int LED33 = A3;
+int LED34 = A4;
+int LED35 = A5;
+int LED36 = A6;
+int LED37 = A7;
 
 bool DataTrans1;
 bool DataTrans2;
@@ -46,14 +60,6 @@ bool DataTrans19;
 
 bool DataTrans20;
 bool DataTrans21;
-bool DataTrans22;
-bool DataTrans23;
-bool DataTrans24;
-bool DataTrans25;
-bool DataTrans26;
-bool DataTrans27;
-bool DataTrans28;
-bool DataTrans29;
 bool DataTrans30;
 bool DataTrans31;
 bool DataTrans32;
@@ -84,6 +90,19 @@ void setup() {
         pinMode (LED14, OUTPUT);
          pinMode (LED15, OUTPUT);
           pinMode (LED16, OUTPUT);
+           pinMode (LED17, OUTPUT);
+            pinMode (LED18, OUTPUT);
+             pinMode (LED19, OUTPUT);
+             pinMode (LED20, OUTPUT);
+              pinMode (LED21, OUTPUT);
+              pinMode (LED30, OUTPUT);
+              pinMode (LED31, OUTPUT);
+              pinMode (LED32, OUTPUT);
+              pinMode (LED33, OUTPUT);
+              pinMode (LED34, OUTPUT);
+              pinMode (LED35, OUTPUT);
+              pinMode (LED36, OUTPUT);
+              pinMode (LED37, OUTPUT);
   // Start the I2C Bus as Slave on address 9
   Wire.begin(9); 
   // Attach a function to trigger when something is received.
@@ -115,14 +134,7 @@ void receiveEvent(bool bytes) {
   DataTrans19 = Wire.read();
   DataTrans20 = Wire.read();
   DataTrans21 = Wire.read();
-  DataTrans22 = Wire.read();
-  DataTrans23 = Wire.read();
-  DataTrans24 = Wire.read();
-  DataTrans25 = Wire.read();
-  DataTrans26 = Wire.read();
-  DataTrans27 = Wire.read();
-  DataTrans28 = Wire.read();
-  DataTrans29 = Wire.read();
+  
   DataTrans30 = Wire.read();
   DataTrans31 = Wire.read();
   DataTrans32 = Wire.read();
@@ -132,7 +144,7 @@ void receiveEvent(bool bytes) {
   DataTrans36 = Wire.read();
   DataTrans37 = Wire.read();
   //Display the value received  
-  Serial.println(DataTrans1);
+ // Serial.println(DataTrans1);
   //If the value received was true turn the led on, otherwise turn it off
  // if(DataTrans1){
    // isOn = 1;
@@ -253,10 +265,93 @@ if(DataTrans9){
   }
   
 
+  if(DataTrans17){
+    digitalWrite(LED17, HIGH);
+  }
+  else{
+    digitalWrite(LED17, LOW);
+  }
+    if(DataTrans18){
+    digitalWrite(LED18, HIGH);
+  }
+  else{
+    digitalWrite(LED18, LOW);
+  }
+    if(DataTrans19){
+    digitalWrite(LED19, HIGH);
+  }
+  else{
+    digitalWrite(LED19, LOW);
+  }
+if(DataTrans20){
+    digitalWrite(LED20, HIGH);
+  }
+  else{
+    digitalWrite(LED20, LOW);
+  }
+if(DataTrans21){
+    digitalWrite(LED21, HIGH);
+  }
+  else{
+    digitalWrite(LED21, LOW);
+  }
 
 
 
+if(DataTrans30){
+    digitalWrite(LED30, HIGH);
+  }
+  else{
+    digitalWrite(LED30, LOW);
+  }
+  if(DataTrans31){
+    digitalWrite(LED31, HIGH);
+  }
+  else{
+    digitalWrite(LED31, LOW);
+  }
+  if(DataTrans32){
+    digitalWrite(LED32, HIGH);
+  }
+  else{
+    digitalWrite(LED32, LOW);
+  }
+  if(DataTrans33){
+    digitalWrite(LED33, HIGH);
+  }
+  else{
+    digitalWrite(LED33, LOW);
+  }
+  if(DataTrans34){
+    digitalWrite(LED34, HIGH);
+  }
+  else{
+    digitalWrite(LED34, LOW);
+  }
+  if(DataTrans35){
+    digitalWrite(LED35, HIGH);
+  }
+  else{
+    digitalWrite(LED35, LOW);
+  }
+  if(DataTrans36){
+    digitalWrite(LED36, HIGH);
+  }
+  else{
+    digitalWrite(LED36, LOW);
+  }
+  if(DataTrans37){
+    digitalWrite(LED37, HIGH);
+  }
+  else{
+    digitalWrite(LED37, LOW);
+  }
 
+  
+
+
+  
+Serial.println(DataTrans30);
 
   
 }

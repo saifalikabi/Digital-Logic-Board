@@ -1,5 +1,9 @@
 #include <Wire.h>
 // constants won't change. They're used here to set pin numbers:
+
+
+
+
 double receivedValue = 0;
 const int SW1 = 22; int SWState1 = 0;
 const int SW2 = 23; int SWState2 = 0;
@@ -56,6 +60,8 @@ const int SW50 = A6; int SWState50 = 0;
 const int SW51 = A7; int SWState51 = 0;
 const int SW52 = A8; int SWState52 = 0;
 
+
+
 // bool value. They're used here to set initial SW value:
 bool DataTrans1 = false;
 bool DataTrans2 = false;
@@ -78,14 +84,8 @@ bool DataTrans18 = false;
 bool DataTrans19 = false;
 bool DataTrans20 = false;
 bool DataTrans21 = false;
-bool DataTrans22 = false;
-bool DataTrans23 = false;
-bool DataTrans24 = false;
-bool DataTrans25 = false;
-bool DataTrans26 = false;
-bool DataTrans27 = false;
-bool DataTrans28 = false;
-bool DataTrans29 = false;
+
+
 bool DataTrans30 = false;
 bool DataTrans31 = false;
 bool DataTrans32 = false;
@@ -133,7 +133,7 @@ void loop() {
 
   while (Wire.available()) { // slave may send less than requested
     receivedValue = Wire.read(); // receive a byte as int
-    Serial.println(receivedValue);         // print the int
+  //  Serial.println(receivedValue);         // print the int
   }
  //  read the state of the pushbutton value:
   SWState1 = digitalRead(SW1); SWState27 = digitalRead(SW27);
@@ -274,12 +274,54 @@ SWState38 == LOW && SWState39 == LOW && SWState40 == LOW && SWState41 == LOW )
 
 // J-K FF program :
 
+if (SWState31 == HIGH){
+if(SWState30 == HIGH && SWState32 == HIGH && DataTrans20 == false ) 
+{ DataTrans20 = true; DataTrans21 = false;} 
+
+else if(SWState30 == HIGH && SWState32 == HIGH && DataTrans20 == true ) 
+{DataTrans20 = false; DataTrans21 = true;}
+
+else if (SWState30 == HIGH && SWState32 == LOW)
+{ DataTrans20 = true; DataTrans21 = false;}
 
 
 
+else if (SWState30 == LOW && SWState32 == HIGH) 
+{DataTrans20 = false; DataTrans21 = true;}}
 
 
+// FULL ADDER
+// 1ST Bits
+if (SWState44 == HIGH || SWState45 == HIGH || SWState46 == HIGH ){DataTrans30 = true;}
+else {DataTrans30 = false;}
+if ((SWState44 && SWState45) || (SWState44 && SWState46)||(SWState45 && SWState46)  ){DataTrans31 = true; DataTrans30 = false;}
+else {DataTrans31 = false;}
+if (SWState44 && SWState45 && SWState46){DataTrans30 = true; DataTrans31 = true;}
 
+//Serial.println(SWState44); 
+//Serial.println(DataTrans30); 
+// 2ND Bits
+if (SWState47 || SWState48 ){DataTrans32 = true;}
+else {DataTrans32 = false;}
+if ((SWState47 && SWState48) || (SWState47 && DataTrans31)||(SWState48 && DataTrans31) ){DataTrans33 = true; DataTrans32 = false;}
+else { DataTrans33 = false;}
+if (SWState47 && SWState48 && DataTrans31){DataTrans32 = true; DataTrans33 = true;}
+
+
+// 3RD Bits
+if (SWState49 || SWState50 ){DataTrans34 = true;}
+else {DataTrans34 = false;}
+if ((SWState49 && SWState50) || (SWState49 && DataTrans33)||(SWState50 && DataTrans33) ){DataTrans35 = true; DataTrans34 = false;}
+else {DataTrans35 = false;}
+if (SWState49 && SWState50 && DataTrans34){DataTrans35 = true; DataTrans34 = true;}
+
+
+// 4RTH Bits
+if (SWState51 || SWState52 ){DataTrans36 = true;}
+else {DataTrans36 = false;}
+if ((SWState51 && SWState52) || (SWState51 && DataTrans35)||(SWState52 && DataTrans35) ){DataTrans37 = true; DataTrans36 = false;}
+else {DataTrans37 = false; }
+if (SWState51 && SWState52 && DataTrans35){DataTrans36 = true; DataTrans37 = true;}
 
 
   
@@ -308,14 +350,7 @@ SWState38 == LOW && SWState39 == LOW && SWState40 == LOW && SWState41 == LOW )
   Wire.write(DataTrans19);
   Wire.write(DataTrans20);
   Wire.write(DataTrans21);
-  Wire.write(DataTrans22);
-  Wire.write(DataTrans23);
-  Wire.write(DataTrans24);
-  Wire.write(DataTrans25);
-  Wire.write(DataTrans26);
-  Wire.write(DataTrans27);
-  Wire.write(DataTrans28);
-  Wire.write(DataTrans29);
+ 
   Wire.write(DataTrans30);
   Wire.write(DataTrans31);
   Wire.write(DataTrans32);
