@@ -35,6 +35,25 @@ int LED35 = A5;
 int LED36 = A6;
 int LED37 = A7;
 
+
+//Connesso al Pin DS del 74HC595
+int dataPin = 8;
+//Connesso al Pin ST_CP del  74HC595
+int latchPin = 9;
+//Connesso al Pin SH_CP del 74HC595
+int clockPin = 10;
+ 
+//connesso ad uno pulsante
+int button1Pin = 11;
+//connesso ad uno pulsante
+int button2Pin = 12;
+
+
+
+
+
+
+
 bool DataTrans1;
 bool DataTrans2;
 bool DataTrans3;
@@ -68,11 +87,24 @@ bool DataTrans34;
 bool DataTrans35;
 bool DataTrans36;
 bool DataTrans37;
+
+
+
+//flag di stato dei pulsanti
+bool b1Status=LOW;
+bool old_b1Status=LOW;
+bool b2Status=LOW;
+bool old_b2Status=LOW;
+
+
+
+
+
 int isOn = 0; // Off = 0 On = 1
 
 void setup() {
   //Set up serial output baud number
-  Serial.begin(9600);
+//  Serial.begin(9600);
   // Define the LED pin as Output
   pinMode (LED1, OUTPUT);
   pinMode (LED2, OUTPUT);
@@ -109,6 +141,19 @@ void setup() {
   Wire.onReceive(receiveEvent);
   //Attach a function to trigger when something is requested
   Wire.onRequest(requestEvent);
+
+
+
+  //configuriamo i 3 pin di  output
+  pinMode(dataPin, OUTPUT);
+  pinMode(latchPin, OUTPUT);
+  pinMode(clockPin, OUTPUT);
+ 
+  pinMode(button1Pin, INPUT );
+  pinMode(button2Pin, INPUT);
+
+
+  
 }
 
 void receiveEvent(bool bytes) {
@@ -157,6 +202,22 @@ void receiveEvent(bool bytes) {
 void requestEvent(){
   //Tell the master whether the led is on or not
   Wire.write(isOn);
+}
+
+
+
+void push(bool aBit)
+{
+   digitalWrite(clockPin, 0); //mi assicuro che clock si LOW
+   digitalWrite(latchPin, 0); //abbasso il latch per iniziare a programmare il 74HC595
+ 
+   digitalWrite(dataPin,aBit ); // alzo il pin data in base al bit corrente in aByte;
+   digitalWrite(clockPin, 1); //alzo il clock -> abbiamo "spinto" il valore 1 nel primo registro del 74HC595. 
+    
+   digitalWrite(dataPin, 0); //rimetto a zero il data pin e clock pin per non portare valori HIGH oltre questo punto.
+   digitalWrite(clockPin, 0); 
+ 
+   digitalWrite(latchPin, 1); //latch HIGH per confermare gli output.
 }
 
 void loop() {
@@ -351,7 +412,21 @@ if(DataTrans30){
 
 
   
-Serial.println(DataTrans30);
+// Serial.println(DataTrans30);
 
-  
+
+   b1Status=digitalRead(button1Pin); //leggiamo lo stato dei due pulsanti
+   b2Status=digitalRead(button2Pin);
+   if ( old_b1Status!=b1Status && b1Status== HIGH) //il primo pulsante è premuto, e non lo era prima
+    push(1);
+    
+      
+   if ( old_b2Status!=b2Status && b2Status== HIGH) //il secondo pulsante è premuto, e non lo era prima
+     push(0);
+ 
+   delay(10);  //anti bounce minimale.
+    
+   old_b1Status=b1Status;
+   old_b2Status=b2Status;
+ 
 }
