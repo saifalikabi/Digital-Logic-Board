@@ -165,22 +165,22 @@ void loop() {
 
   // AND program :
   if(SWState1 == HIGH && SWState2 == HIGH){
-    DataTrans1 = true; delay (50);
+    DataTrans1 = true; 
   }else{DataTrans1 = false;
   }
  // NAND program :
 if(!(SWState3 == HIGH && SWState4 == HIGH)){
-    DataTrans2 = true;delay (50);
+    DataTrans2 = true;
   }else {DataTrans2 = false;
   }
 // OR program :
     if(SWState5 == HIGH || SWState6 == HIGH){
-    DataTrans3 = true; delay (50);
+    DataTrans3 = true; 
   }else{DataTrans3 = false;
   }
 // NOR program :
 if(!(SWState7 == HIGH || SWState8 == HIGH)){
-    DataTrans4 = true; delay (50);
+    DataTrans4 = true; 
   }else{DataTrans4 = false;
   }
 // XOR program :
@@ -313,7 +313,7 @@ if (SWState49 || SWState50 ){DataTrans34 = true;}
 else {DataTrans34 = false;}
 if ((SWState49 && SWState50) || (SWState49 && DataTrans33)||(SWState50 && DataTrans33) ){DataTrans35 = true; DataTrans34 = false;}
 else {DataTrans35 = false;}
-if (SWState49 && SWState50 && DataTrans34){DataTrans35 = true; DataTrans34 = true;}
+if (SWState49 && SWState50 && DataTrans33){DataTrans35 = true; DataTrans34 = true;}
 
 
 // 4RTH Bits
@@ -362,5 +362,5 @@ if (SWState51 && SWState52 && DataTrans35){DataTrans36 = true; DataTrans37 = tru
   
   Wire.endTransmission();   
  //Serial.print(DataTrans1);Serial.print(SWState2);Serial.print(SWState1);
-  delay(30);
+  delay(50);
 }
