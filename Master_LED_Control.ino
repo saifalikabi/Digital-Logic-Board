@@ -1,102 +1,54 @@
 #include <Wire.h>
 // constants won't change. They're used here to set pin numbers:
-
-
-
-
 double receivedValue = 0;
-const int SW1 = 22; int SWState1 = 0;
-const int SW2 = 23; int SWState2 = 0;
-const int SW3 = 24; int SWState3 = 0;
-const int SW4 = 25; int SWState4 = 0;
-const int SW5 = 26; int SWState5 = 0;
-const int SW6 = 27; int SWState6 = 0;
-const int SW7 = 28; int SWState7 = 0;
-const int SW8 = 29; int SWState8 = 0;
-const int SW9 = 30; int SWState9 = 0;
-const int SW10 = 31; int SWState10 = 0;
-const int SW11 = 32; int SWState11 = 0;
-const int SW12 = 33; int SWState12 = 0;
-const int SW13 = 34; int SWState13 = 0;
-const int SW14 = 35; int SWState14 = 0;
-const int SW15 = 36; int SWState15 = 0;
-const int SW16 = 37; int SWState16 = 0;
-const int SW17 = 38; int SWState17 = 0;
-const int SW18 = 39; int SWState18 = 0;
-const int SW19 = 40; int SWState19 = 0;
-const int SW20 = 41; int SWState20 = 0;
-const int SW21 = 42; int SWState21 = 0;
-const int SW22 = 43; int SWState22 = 0;
-const int SW23 = 44; int SWState23 = 0;
-const int SW24 = 45; int SWState24 = 0;
-const int SW25 = 46; int SWState25 = 0;
-const int SW26 = 47; int SWState26 = 0;
-const int SW27 = 48; int SWState27 = 0;
-const int SW28 = 49; int SWState28 = 0;
-const int SW29 = 50; int SWState29 = 0;
-const int SW30 = 51; int SWState30 = 0;
-const int SW31 = 52; int SWState31 = 0;
-const int SW32 = 53; int SWState32 = 0;
+const int SW1 = 22; int SWState1 = 0; const int SW2 = 23; int SWState2 = 0;
+const int SW3 = 24; int SWState3 = 0; const int SW4 = 25; int SWState4 = 0;
+const int SW5 = 26; int SWState5 = 0; const int SW6 = 27; int SWState6 = 0;
+const int SW7 = 28; int SWState7 = 0; const int SW8 = 29; int SWState8 = 0;
+const int SW9 = 30; int SWState9 = 0; const int SW10 = 31; int SWState10 = 0;
+const int SW11 = 32; int SWState11 = 0; const int SW12 = 33; int SWState12 = 0;
+const int SW13 = 34; int SWState13 = 0; const int SW14 = 35; int SWState14 = 0;
+const int SW15 = 36; int SWState15 = 0; const int SW16 = 37; int SWState16 = 0;
+const int SW17 = 38; int SWState17 = 0; const int SW18 = 39; int SWState18 = 0;
+const int SW19 = 40; int SWState19 = 0; const int SW20 = 41; int SWState20 = 0;
+const int SW21 = 42; int SWState21 = 0; const int SW22 = 43; int SWState22 = 0;
+const int SW23 = 44; int SWState23 = 0; const int SW24 = 45; int SWState24 = 0;
+const int SW25 = 46; int SWState25 = 0; const int SW26 = 47; int SWState26 = 0;
+const int SW27 = 48; int SWState27 = 0; const int SW28 = 49; int SWState28 = 0;
+const int SW29 = 50; int SWState29 = 0; const int SW30 = 51; int SWState30 = 0;
+const int SW31 = 52; int SWState31 = 0;const int SW32 = 53; int SWState32 = 0;
 
-const int SW33 = 2; int SWState33 = 0;
-const int SW34 = 3; int SWState34 = 0;
-const int SW35 = 4; int SWState35 = 0;
-const int SW36 = 5; int SWState36 = 0;
-const int SW37 = 6; int SWState37 = 0;
-const int SW38 = 7; int SWState38 = 0;
-const int SW39 = 8; int SWState39 = 0;
-const int SW40 = 9; int SWState40 = 0;
-const int SW41 = 10; int SWState41 = 0;
-const int SW42 = 11; int SWState42 = 0;
+const int SW33 = 2; int SWState33 = 0; const int SW34 = 3; int SWState34 = 0;
+const int SW35 = 4; int SWState35 = 0; const int SW36 = 5; int SWState36 = 0;
+const int SW37 = 6; int SWState37 = 0; const int SW38 = 7; int SWState38 = 0;
+const int SW39 = 8; int SWState39 = 0; const int SW40 = 9; int SWState40 = 0;
+const int SW41 = 10; int SWState41 = 0; const int SW42 = 11; int SWState42 = 0;
 const int SW43 = 12; int SWState43 = 0;
-
-const int SW44 = A0; int SWState44 = 0;
-const int SW45 = A1; int SWState45 = 0;
-const int SW46 = A2; int SWState46 = 0;
-const int SW47 = A3; int SWState47 = 0;
-const int SW48 = A4; int SWState48 = 0;
-const int SW49 = A5; int SWState49 = 0;
-const int SW50 = A6; int SWState50 = 0;
-const int SW51 = A7; int SWState51 = 0;
+const int SW44 = A0; int SWState44 = 0; const int SW45 = A1; int SWState45 = 0;
+const int SW46 = A2; int SWState46 = 0; const int SW47 = A3; int SWState47 = 0;
+const int SW48 = A4; int SWState48 = 0; const int SW49 = A5; int SWState49 = 0;
+const int SW50 = A6; int SWState50 = 0; const int SW51 = A7; int SWState51 = 0;
 const int SW52 = A8; int SWState52 = 0;
-
-
-
 // bool value. They're used here to set initial SW value:
-bool DataTrans1 = false;
-bool DataTrans2 = false;
-bool DataTrans3 = false;
-bool DataTrans4 = false;
-bool DataTrans5 = false;
-bool DataTrans6 = false;
-bool DataTrans7 = false;
-bool DataTrans8 = false;
-bool DataTrans9 = false;
-bool DataTrans10 = false;
-bool DataTrans11 = false;
-bool DataTrans12 = false;
-bool DataTrans13 = false;
-bool DataTrans14 = false;
-bool DataTrans15 = false;
-bool DataTrans16 = false;
-bool DataTrans17 = false;
-bool DataTrans18 = false;
-bool DataTrans19 = false;
-bool DataTrans20 = false;
+bool DataTrans1 = false; bool DataTrans2 = false;
+bool DataTrans3 = false; bool DataTrans4 = false;
+bool DataTrans5 = false; bool DataTrans6 = false;
+bool DataTrans7 = false; bool DataTrans8 = false;
+bool DataTrans9 = false; bool DataTrans10 = false;
+bool DataTrans11 = false; bool DataTrans12 = false;
+bool DataTrans13 = false; bool DataTrans14 = false;
+bool DataTrans15 = false; bool DataTrans16 = false;
+bool DataTrans17 = false; bool DataTrans18 = false;
+bool DataTrans19 = false; bool DataTrans20 = false;
 bool DataTrans21 = false;
 
-
-bool DataTrans30 = false;
-bool DataTrans31 = false;
-bool DataTrans32 = false;
-bool DataTrans33 = false;
-bool DataTrans34 = false;
-bool DataTrans35 = false;
-bool DataTrans36 = false;
-bool DataTrans37 = false;
+bool DataTrans30 = false;bool DataTrans31 = false;
+bool DataTrans32 = false;bool DataTrans33 = false;
+bool DataTrans34 = false;bool DataTrans35 = false;
+bool DataTrans36 = false;bool DataTrans37 = false;
 
 void setup() {
- 
+// Setting Up the board
   Wire.begin(); 
   // initialize the pushbutton pin as an input:
   pinMode(SW1, INPUT); pinMode(SW27, INPUT);
@@ -128,13 +80,14 @@ void setup() {
  Serial.begin(9600);
 }
 
-void loop() {
-  Wire.requestFrom(9, 4);
+void loop() {   // Program Scan cycle
+
+  Wire.requestFrom(9, 4); // Slave (ID ,  Byte stream Length)
 
   while (Wire.available()) { // slave may send less than requested
     receivedValue = Wire.read(); // receive a byte as int
-  //  Serial.println(receivedValue);         // print the int
   }
+
  //  read the state of the pushbutton value:
   SWState1 = digitalRead(SW1); SWState27 = digitalRead(SW27);
   SWState2 = digitalRead(SW2); SWState28 = digitalRead(SW28);
@@ -166,13 +119,13 @@ void loop() {
   // AND program :
   if(SWState1 == HIGH && SWState2 == HIGH){
     DataTrans1 = true; 
-  }else{DataTrans1 = false;
-  }
+  }else{DataTrans1 = false; }
+
  // NAND program :
 if(!(SWState3 == HIGH && SWState4 == HIGH)){
     DataTrans2 = true;
-  }else {DataTrans2 = false;
-  }
+  }else {DataTrans2 = false; }
+
 // OR program :
     if(SWState5 == HIGH || SWState6 == HIGH){
     DataTrans3 = true; 
@@ -181,29 +134,23 @@ if(!(SWState3 == HIGH && SWState4 == HIGH)){
 // NOR program :
 if(!(SWState7 == HIGH || SWState8 == HIGH)){
     DataTrans4 = true; 
-  }else{DataTrans4 = false;
-  }
+  }else{DataTrans4 = false; }
 // XOR program :
  if ((!SWState9 == HIGH && SWState10 == HIGH)||(SWState9 == HIGH && ! SWState10 == HIGH)) {
     DataTrans5 = true;
   } else {
-    DataTrans5 = false;
-  }
+    DataTrans5 = false;}
 // XNOR program :
    if ((SWState11 == HIGH && SWState12 == HIGH)||(! SWState11 == HIGH && ! SWState12 == HIGH)) {
     DataTrans6 = true;
   } else {
-    DataTrans6 = false;
-  }
+    DataTrans6 = false;}
 // NOT program :
   if (! SWState13 == HIGH) {
     DataTrans7 = true;
   } else {
-    DataTrans7 = false;
-  }
-
+    DataTrans7 = false; }
 // MUX program :
-
 if (SWState14){
 if ((! SWState23 == HIGH && ! SWState24 == HIGH && ! SWState25 == HIGH && SWState15 == HIGH) ||
   (SWState23 == HIGH && ! SWState24 == HIGH && !SWState25 == HIGH && SWState16 == HIGH) ||
@@ -218,7 +165,6 @@ if ((! SWState23 == HIGH && ! SWState24 == HIGH && ! SWState25 == HIGH && SWStat
   } else {
     DataTrans8 = false;}}
   else if (!SWState14) {DataTrans8 = false;}
-
 // DECODER program :
 if (SWState26){
 if (! SWState27 == HIGH && ! SWState28 == HIGH && ! SWState29 == HIGH ) { DataTrans9 = true;}
@@ -247,11 +193,8 @@ if (!SWState26 ) {DataTrans9 = false;
   DataTrans15 = false;
   DataTrans16 = false;}
 
-
 // ENCODER program :
-
 if (SWState33){
-  
 if (SWState34 == HIGH ) {DataTrans17 = false;  DataTrans18 = false ; DataTrans19 = false;}
 if (SWState35 == HIGH ) {DataTrans17 = true;  DataTrans18 = false ; DataTrans19 = false;}
 if (SWState36 == HIGH ) {DataTrans17 = false;  DataTrans18 = true ; DataTrans19 = false;}
@@ -266,29 +209,16 @@ SWState38 == LOW && SWState39 == LOW && SWState40 == LOW && SWState41 == LOW )
 {DataTrans17 = false;  DataTrans18 = false ; DataTrans19 = false;}
   if (!SWState33) {DataTrans17 = false;  DataTrans18 = false ; DataTrans19 = false;}
 
-
-
-
-
-
-
 // J-K FF program :
-
 if (SWState31 == HIGH){
 if(SWState30 == HIGH && SWState32 == HIGH && DataTrans20 == false ) 
 { DataTrans20 = true; DataTrans21 = false;} 
-
 else if(SWState30 == HIGH && SWState32 == HIGH && DataTrans20 == true ) 
 {DataTrans20 = false; DataTrans21 = true;}
-
 else if (SWState30 == HIGH && SWState32 == LOW)
 { DataTrans20 = true; DataTrans21 = false;}
-
-
-
 else if (SWState30 == LOW && SWState32 == HIGH) 
 {DataTrans20 = false; DataTrans21 = true;}}
-
 
 // FULL ADDER
 // 1ST Bits
@@ -297,70 +227,39 @@ else {DataTrans30 = false;}
 if ((SWState44 && SWState45) || (SWState44 && SWState46)||(SWState45 && SWState46)  ){DataTrans31 = true; DataTrans30 = false;}
 else {DataTrans31 = false;}
 if (SWState44 && SWState45 && SWState46){DataTrans30 = true; DataTrans31 = true;}
-
-//Serial.println(SWState44); 
-//Serial.println(DataTrans30); 
 // 2ND Bits
 if (SWState47 || SWState48 ){DataTrans32 = true;}
 else {DataTrans32 = false;}
 if ((SWState47 && SWState48) || (SWState47 && DataTrans31)||(SWState48 && DataTrans31) ){DataTrans33 = true; DataTrans32 = false;}
 else { DataTrans33 = false;}
 if (SWState47 && SWState48 && DataTrans31){DataTrans32 = true; DataTrans33 = true;}
-
-
 // 3RD Bits
 if (SWState49 || SWState50 ){DataTrans34 = true;}
 else {DataTrans34 = false;}
 if ((SWState49 && SWState50) || (SWState49 && DataTrans33)||(SWState50 && DataTrans33) ){DataTrans35 = true; DataTrans34 = false;}
 else {DataTrans35 = false;}
 if (SWState49 && SWState50 && DataTrans33){DataTrans35 = true; DataTrans34 = true;}
-
-
 // 4RTH Bits
 if (SWState51 || SWState52 ){DataTrans36 = true;}
 else {DataTrans36 = false;}
 if ((SWState51 && SWState52) || (SWState51 && DataTrans35)||(SWState52 && DataTrans35) ){DataTrans37 = true; DataTrans36 = false;}
 else {DataTrans37 = false; }
 if (SWState51 && SWState52 && DataTrans35){DataTrans36 = true; DataTrans37 = true;}
-
-
-  
-  
-
+// Transmission byte stream to slave ID 9
   Wire.beginTransmission(9); 
-  
-  Wire.write(DataTrans1);
-  Wire.write(DataTrans2);
-  Wire.write(DataTrans3);  
-  Wire.write(DataTrans4);
-  Wire.write(DataTrans5);
-  Wire.write(DataTrans6);
-  Wire.write(DataTrans7);
-  Wire.write(DataTrans8);
-  Wire.write(DataTrans9);
-  Wire.write(DataTrans10);
-  Wire.write(DataTrans11);
-  Wire.write(DataTrans12);
-  Wire.write(DataTrans13); 
-  Wire.write(DataTrans14);
-  Wire.write(DataTrans15);
-  Wire.write(DataTrans16);
-  Wire.write(DataTrans17);
-  Wire.write(DataTrans18);   
-  Wire.write(DataTrans19);
-  Wire.write(DataTrans20);
-  Wire.write(DataTrans21);
- 
-  Wire.write(DataTrans30);
-  Wire.write(DataTrans31);
-  Wire.write(DataTrans32);
-  Wire.write(DataTrans33);
-  Wire.write(DataTrans34);
-  Wire.write(DataTrans35); 
-  Wire.write(DataTrans36);
-  Wire.write(DataTrans37);
-  
+  Wire.write(DataTrans1); Wire.write(DataTrans2); Wire.write(DataTrans3);  
+  Wire.write(DataTrans4);  Wire.write(DataTrans5);  Wire.write(DataTrans6);
+  Wire.write(DataTrans7);  Wire.write(DataTrans8);  Wire.write(DataTrans9);
+  Wire.write(DataTrans10);  Wire.write(DataTrans11);  Wire.write(DataTrans12);
+  Wire.write(DataTrans13);   Wire.write(DataTrans14);  Wire.write(DataTrans15);
+  Wire.write(DataTrans16);  Wire.write(DataTrans17);  Wire.write(DataTrans18);   
+  Wire.write(DataTrans19);  Wire.write(DataTrans20);  Wire.write(DataTrans21);
+
+  Wire.write(DataTrans30);  Wire.write(DataTrans31);   Wire.write(DataTrans32);
+  Wire.write(DataTrans33);  Wire.write(DataTrans34);  Wire.write(DataTrans35);
+  Wire.write(DataTrans36);  Wire.write(DataTrans37);
+
+  // End Transmission for I2C slaves 
   Wire.endTransmission();   
- //Serial.print(DataTrans1);Serial.print(SWState2);Serial.print(SWState1);
   delay(50);
 }
